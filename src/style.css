@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.Container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 100px;
+}
+
+.list-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  height: auto;
+  box-shadow: 1px 0 20px 1px #929292;
+}
+
+h1 {
+  color: black;
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.01px solid #eeecec;
+  width: 100%;
+  padding-right: 1.25rem;
+}
+
+.heading h1 {
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  padding-left: 1.25rem;
+}
+
+.placeholder {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+  border-bottom: 0.01px solid #ebe8e8;
+}
+
+.placeholder input {
+  font-family: sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  font-style: italic;
+  position: relative;
+  padding-left: 1.25rem;
+  color: #8b8b8b;
+  border: none;
+  outline: none;
+  left: 0%;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#formlist {
+  display: none;
+  width: 100%;
+}
+
+label {
+  width: 80%;
+  text-align: left;
+}
+
+.material-symbols-outlined {
+  color: #8a8989;
+  padding-left: 1.25rem;
+  cursor: pointer;
+}
+
+.list-task {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+}
+
+#keyboard_return {
+  padding-right: 1.25rem;
+}
+
+.newlist {
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  list-style: none;
+}
+
+.button {
+  cursor: pointer;
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #8a8989;
+  padding: 15px;
+}
+
+.btnBack {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eceff0;
+}
