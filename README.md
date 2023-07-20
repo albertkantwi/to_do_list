@@ -41,7 +41,7 @@ With a passion for web development, I have honed my expertise in these technolog
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo
-coming soon
+
 
 ## Key Features
 
