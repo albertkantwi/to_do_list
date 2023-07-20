@@ -22,7 +22,12 @@
 
 # 📖 To-Do list <a name="about-project"></a>
 
-- This website shows a sneak peek into the projects I have developed, showcasing my skills in HTML, CSS, javascript and webpack. With a passion for web development, I have honed my expertise in these technologies to create stunning and functional websites.
+- This website shows a sneak peek into the projects I have developed, showcasing my skills in HTML, CSS, javascript and webpack. 
+
+This is a simple daily activities website that shows what goes on withing a particular day. It has 'add task section' where you can add new task.
+A 'form section' where your added task displys and 'clear section' for end of daily activities deletion.
+
+With a passion for web development, I have honed my expertise in these technologies to create stunning and functional websites.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -36,8 +41,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo
-
-- You can see the demo [Here](coming soon)
+coming soon
 
 ## Key Features
 
@@ -64,6 +68,8 @@ Example command:
 ```sh
 1.use a browser
 2.use cable internet
+3. node.js
+4. text editor
 ```
  
 
@@ -103,7 +109,7 @@ To run the project, execute the following command:
 Example command:
 
 ```sh
-- Open the index with live server.
+- Open the index run 'npm run dev.
 - Or if you don't have a live server extension open the index in the browser by clicking on the file .
 ```
 
