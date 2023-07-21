@@ -25,7 +25,7 @@
 - This website shows a sneak peek into the projects I have developed, showcasing my skills in HTML, CSS, javascript and webpack. 
 
 This is a simple daily activities website that shows what goes on withing a particular day. It has 'add task section' where you can add new task.
-A 'form section' where your added task displys and 'clear section' for end of daily activities deletion.
+A 'form section' where your added task displays and 'clear section' for end of daily activities deletion.
 
 With a passion for web development, I have honed my expertise in these technologies to create stunning and functional websites.
 
