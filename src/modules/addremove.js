@@ -1,7 +1,9 @@
-import todoTasks from './task';
+// import todoTasks from './task';
 
 const listDiv = document.querySelector('.list-items');
 const LOCAL_STORAGE_KEY = 'todoTasks';
+
+export const todoTasks = [];
 
 export const saveToLocalStorage = () => {
   localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todoTasks));

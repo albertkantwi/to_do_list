@@ -1,12 +1,12 @@
 // import _ from 'lodash';
 import './style.css';
-import todoTasks from './modules/task';
 import {
   addTask,
   addNewTask,
   deleteTask,
   toggleEditMode,
   saveToLocalStorage,
+  todoTasks,
 } from './modules/addremove';
 
 const listDiv = document.querySelector('.list-items');
