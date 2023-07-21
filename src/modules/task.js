@@ -1,4 +1,4 @@
- const todoTasks = [
+const todoTasks = [
   {
     completed: false,
     index: 1,
