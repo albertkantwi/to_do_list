@@ -1,131 +1,119 @@
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #fff;
+  background-color: #e0dddd;
   box-sizing: border-box;
-}
-
-.Container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 100px;
-}
-
-.list-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 80%;
-  height: auto;
-  box-shadow: 1px 0 20px 1px #929292;
-}
-
-h1 {
-  color: black;
-}
-
-.heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 0.01px solid #eeecec;
-  width: 100%;
-  padding-right: 1.25rem;
-}
-
-.heading h1 {
-  font-family: sans-serif;
-  font-size: 1.25rem;
-  font-weight: 400;
-  padding-left: 1.25rem;
-}
-
-.placeholder {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 15px;
-  border-bottom: 0.01px solid #ebe8e8;
-}
-
-.placeholder input {
-  font-family: sans-serif;
-  font-weight: 400;
-  font-size: 1.25rem;
-  font-style: italic;
-  position: relative;
-  padding-left: 1.25rem;
-  color: #8b8b8b;
-  border: none;
-  outline: none;
-  left: 0%;
-}
-
-.list {
-  list-style-type: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-.list li {
+.container {
   display: flex;
-  justify-content: space-between;
-  text-align: right;
-  padding: 10px;
-  border-bottom: 1px solid #ccc;
-}
-
-#formlist {
-  display: none;
-  width: 100%;
-}
-
-label {
-  width: 80%;
-  text-align: left;
-}
-
-.material-symbols-outlined {
-  color: #8a8989;
-  padding-left: 1.25rem;
-  cursor: pointer;
-}
-
-.list-task {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
+}
+
+.header {
+  flex-direction: row;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0.5rem;
+  width: 50%;
+  margin-top: 5rem;
+}
+
+.header p {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.header i {
+  margin-left: auto;
+}
+
+.input-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  padding: 0.5rem;
+  width: 50%;
+  height: 2rem;
+  margin-top: 0.2rem;
+}
+
+.input-div input {
+  flex-grow: 1;
+  border: none;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.list-items {
   list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  position: relative;
+  left: -1.2rem;
 }
 
-#keyboard_return {
-  padding-right: 1.25rem;
-}
-
-.newlist {
-  font-family: sans-serif;
-  font-size: 1.25rem;
-  font-weight: 400;
-  list-style: none;
-}
-
-.button {
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: #8a8989;
-  padding: 15px;
-}
-
-.btnBack {
-  width: 100%;
+.display-item {
   display: flex;
   justify-content: center;
+  background-color: #fff;
   align-items: center;
-  background-color: #eceff0;
+  margin-top: 0.2rem;
+  width: 100%;
+  font-size: 1rem;
+  height: 2.6rem;
+  padding-inline: 8px;
+}
+
+.display-item p {
+  font-size: 1.1rem;
+}
+
+.display-item .edit-input {
+  font-size: 1.1rem;
+  height: 2rem;
+  border: none;
+}
+
+.display-item input[type="checkbox"] {
+  margin-right: 20px;
+  align-self: flex-start;
+  margin-top: 0.7rem;
+}
+
+.display-item .dot-icon,
+.delete-icon {
+  margin-left: auto;
+  align-self: flex-end;
+  height: 0.5rem;
+  position: relative;
+  top: -1rem;
+}
+
+.clear {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ebeeee;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  font-size: 18px;
+  color: gray;
+  width: 50%;
+  text-align: center;
+  padding-top: 16px;
+  cursor: pointer;
 }
