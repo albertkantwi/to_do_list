@@ -1,0 +1,152 @@
+body {
+  background-color: #e6e5e5;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  width: 100%;
+  background-color: #e6eaef;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0;
+}
+
+.container {
+  width: 55%;
+  margin: 1.25rem auto;
+  background-color: #fff;
+}
+
+.header {
+  display: flex;
+}
+
+.fa {
+  margin-top: 0.75rem;
+  margin-right: 1.8rem;
+}
+
+h2 {
+  width: 100%;
+  padding-bottom: 20px;
+  padding-left: 16px;
+  margin: 12px 0 12px 20px;
+  color: #7a869a;
+}
+
+#refresh {
+  margin-right: 60px;
+}
+
+form {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 20px;
+  border-bottom: #7a869a 1px solid;
+}
+
+.uil {
+  margin-right: 57px;
+}
+
+.icon-uil {
+  display: block;
+  background-color: transparent;
+  border: none;
+}
+
+ul {
+  min-height: 100px;
+  width: 100%;
+}
+
+ul li {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 26px;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  border-bottom: #7a869a 1px solid;
+}
+
+.fa-ellipsis-v {
+  position: absolute;
+  right: 25%;
+  margin-top: -5px;
+}
+
+.fa-trash-o {
+  margin-top: -10px;
+}
+
+.wipe-all-out {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 84px;
+  margin-top: 70px;
+  color: #888a8d;
+  background-color: rgb(230, 226, 226);
+  box-shadow: 1px 1px 1px 1px;
+}
+
+input[type="checkbox"],
+input[type="text"] {
+  border: none;
+  outline: none;
+}
+
+input[type='checkbox']:checked + span {
+  text-decoration: line-through;
+}
+
+input[type='text'] {
+  flex: 1;
+  background: transparent;
+  margin-left: 0.5rem;
+  color: #999;
+  font-size: 1rem;
+}
+
+.fa-ellipsis-vertical:hover {
+  cursor: move;
+}
+
+.new-task {
+  font-size: 20px;
+  font-style: italic;
+  padding-left: 30px;
+  border: none;
+  color: #7a869a;
+  margin-bottom: 0;
+}
+
+.list-items {
+  margin-bottom: 0;
+  margin-top: 0;
+  list-style: none;
+  color: #79839e;
+  padding-left: 0;
+  height: 300px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.delete-button {
+  display: inline-block;
+  font-size: 1.2rem;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  padding: 0;
+}
