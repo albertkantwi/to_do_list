@@ -40,7 +40,7 @@ export const addTask = (detail, idx, status) => {
   listDiv.appendChild(singleTask);
 };
 
- export const addNewTask = (inputField, event) => {
+export const addNewTask = (inputField, event) => {
   if (event.key === 'Enter' && inputField.value.trim() !== '') {
     const newTaskDescription = inputField.value.trim();
     const newIndex = todoTasks.length + 1;

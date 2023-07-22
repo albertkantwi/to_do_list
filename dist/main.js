@@ -136,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst todoTasks = [\n  {\n    description: 'Take breakfasst',\n    completed: false,\n    index: 1,\n  },\n  {\n    description: 'Join Microverse Program',\n    completed: false,\n    index: 2,\n  },\n  {\n    description: 'Take a walk',\n    completed: false,\n    index: 3,\n  },\n];\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todoTasks);\n\n//# sourceURL=webpack://project-to-do-list/./src/modules/task.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst todoTasks = [\n  {\n    description: '',\n    completed: false,\n    index: 1,\n  },\n];\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todoTasks);\n\n//# sourceURL=webpack://project-to-do-list/./src/modules/task.js?");
 
 /***/ })
 
