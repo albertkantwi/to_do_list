@@ -1,9 +1,9 @@
-const todoTasks = [
-  {
-    description: '',
-    completed: false,
-    index: 1,
-  },
-];
+const markAsCompleted = (task) => {
+  task.completed = true;
+};
 
-export default todoTasks;
+const markAsIncomplete = (task) => {
+  task.completed = false;
+};
+
+export { markAsCompleted, markAsIncomplete };

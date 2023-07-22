@@ -1,124 +1,196 @@
-import todoTasks from './task';
+import { markAsCompleted, markAsIncomplete } from './task.js';
 
-const listDiv = document.querySelector('.list-items');
-const LOCAL_STORAGE_KEY = 'todoTasks';
+const taskList = document.querySelector('.list-items');
+let editTaskDescription;
+let deleteTask;
 
-export const saveToLocalStorage = () => {
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todoTasks));
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+const saveTasks = () => {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 };
 
-export const addTask = (detail, idx, status) => {
-  const task = {
-    description: detail,
-    completed: status,
-    index: idx,
-  };
+export const createTaskLists = (task) => {
+  const deleteButton = document.createElement('button');
+  const listItemElement = document.createElement('li');
+  const iconElement = document.createElement('i');
+  const descriptionElement = document.createElement('span');
 
-  const singleTask = document.createElement('li');
-  singleTask.className = 'display-item';
-  singleTask.id = `${task.description}-${task.index}`;
+  const checkboxElement = document.createElement('input');
+  checkboxElement.type = 'checkbox';
+  checkboxElement.checked = task.completed;
 
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.id = `${task.index}-checkbox`;
-  checkbox.name = 'checkbox';
-  checkbox.className = 'check-box';
-  if (status) {
-    checkbox.checked = true;
-  }
+  checkboxElement.addEventListener('change', () => {
+    if (checkboxElement.checked) {
+      markAsCompleted(task);
+    } else {
+      markAsIncomplete(task);
+    }
+    saveTasks();
 
-  const taskDescription = document.createElement('p');
-  taskDescription.innerText = task.description;
-
-  singleTask.appendChild(checkbox);
-  singleTask.appendChild(taskDescription);
-
-  const threeDotIcon = document.createElement('i');
-  threeDotIcon.classList.add('fas', 'fa-ellipsis-v', 'dot-icon');
-  threeDotIcon.classList.add(`${task.index}-threedot`);
-  singleTask.appendChild(threeDotIcon);
-  listDiv.appendChild(singleTask);
-};
-
-export const addNewTask = (inputField, event) => {
-  if (event.key === 'Enter' && inputField.value.trim() !== '') {
-    const newTaskDescription = inputField.value.trim();
-    const newIndex = todoTasks.length + 1;
-
-    addTask(newTaskDescription, newIndex, false);
-    const newTask = {
-      description: newTaskDescription,
-      completed: false,
-      index: newIndex,
-    };
-    todoTasks.push(newTask);
-    inputField.value = '';
-    saveToLocalStorage();
-  }
-};
-
-export const deleteTask = (indexes) => {
-  indexes.sort((a, b) => b - a);
-  indexes.forEach((index) => {
-    todoTasks.splice(index, 1);
-  });
-
-  for (let i = 0; i < todoTasks.length; i += 1) {
-    todoTasks[i].index = i + 1;
-  }
-
-  saveToLocalStorage();
-};
-
-export const toggleViewMode = (taskElement, index, description) => {
-  const deleteIcon = taskElement.querySelector('.delete-icon');
-  const threeDotIcon = document.createElement('i');
-  threeDotIcon.classList.add('fas', 'fa-ellipsis-v', 'dot-icon');
-  threeDotIcon.setAttribute('data-action', 'edit');
-
-  const inputField = taskElement.querySelector('.edit-input');
-  inputField.remove();
-
-  const taskDescription = document.createElement('p');
-  taskDescription.innerText = description;
-  taskElement.appendChild(taskDescription);
-
-  deleteIcon.remove();
-  taskElement.appendChild(threeDotIcon);
-
-  todoTasks[index - 1].description = description;
-  saveToLocalStorage();
-};
-
-export const editTaskDescription = (index, newDescription) => {
-  todoTasks[index - 1].description = newDescription;
-  saveToLocalStorage();
-};
-
-export const toggleEditMode = (taskElement, index) => {
-  const threeDotIcon = taskElement.querySelector('.dot-icon');
-  const deleteIcon = document.createElement('i');
-  deleteIcon.classList.add('fas', 'fa-trash', 'delete-icon');
-  deleteIcon.setAttribute('data-action', 'delete');
-
-  const taskDescription = taskElement.querySelector('p');
-  const currentDescription = taskDescription.innerText;
-
-  taskDescription.remove();
-  const inputField = document.createElement('input');
-  inputField.type = 'text';
-  inputField.className = 'edit-input';
-  inputField.value = currentDescription;
-  taskElement.appendChild(inputField);
-
-  threeDotIcon.remove();
-  taskElement.appendChild(deleteIcon);
-
-  inputField.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && inputField.value.trim() !== '') {
-      const newDescription = inputField.value.trim();
-      editTaskDescription(index, newDescription);
-      toggleViewMode(taskElement, index, newDescription);
+    if (checkboxElement.checked) {
+      deleteButton.style.display = 'block';
+      iconElement.style.display = 'none';
+      listItemElement.style.display = 'flex';
+      listItemElement.style.justifyContent = 'flex-start';
+      deleteButton.style.marginLeft = 'auto';
+    } else {
+      deleteButton.style.display = 'none';
+      iconElement.style.display = 'block';
+      descriptionElement.style.color = '#999';
     }
   });
+
+  descriptionElement.textContent = task.description;
+
+  descriptionElement.addEventListener('click', () => {
+    editTaskDescription(task);
+  });
+
+  listItemElement.appendChild(checkboxElement);
+  listItemElement.appendChild(descriptionElement);
+
+  iconElement.classList.add('fa', 'fa-ellipsis-v');
+  iconElement.addEventListener('click', () => {
+    editTaskDescription(task);
+    deleteButton.style.display = 'block';
+    deleteButton.style.height = '20px';
+    iconElement.style.display = 'none';
+    listItemElement.style.backgroundColor = '#f4f4a2';
+  });
+  listItemElement.appendChild(iconElement);
+
+  deleteButton.innerHTML = '<i class="fa fa-trash-o"></i>';
+  deleteButton.classList.add('delete-button');
+  deleteButton.style.display = 'none';
+
+  deleteButton.addEventListener('click', () => {
+    deleteTask(task.index);
+  });
+  listItemElement.appendChild(deleteButton);
+
+  listItemElement.draggable = true;
+  listItemElement.addEventListener('dragstart', (event) => {
+    const { target } = event;
+    event.dataTransfer.setData('text/plain', target.dataset.index);
+    target.style.opacity = 0.4;
+  });
+
+  listItemElement.addEventListener('dragenter', (event) => {
+    event.preventDefault();
+    const { target } = event;
+    if (target.classList.contains('task')) {
+      target.style.border = '2px dashed #555';
+    }
+  });
+
+  listItemElement.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+
+  listItemElement.addEventListener('dragleave', (event) => {
+    const { target } = event;
+    if (target.classList.contains('task')) {
+      target.style.border = '1px solid transparent';
+    }
+  });
+
+  listItemElement.addEventListener('drop', (event) => {
+    const { target } = event;
+    if (target.classList.contains('task')) {
+      target.style.border = '1px solid transparent';
+      const fromIndex = parseInt(event.dataTransfer.getData('text/plain'), 10);
+      const toIndex = parseInt(target.dataset.index, 10);
+
+      const fromTask = tasks.find((task) => task.index === fromIndex);
+      const toTask = tasks.find((task) => task.index === toIndex);
+
+      if (fromTask && toTask) {
+        const tempIndex = fromTask.index;
+        fromTask.index = toTask.index;
+        toTask.index = tempIndex;
+        saveTasks();
+      }
+    }
+  });
+  return listItemElement;
+};
+
+function addNewTask(description) {
+  const taskIndex = tasks.length + 1;
+
+  const task = { description, completed: false, index: taskIndex };
+  tasks.push(task);
+  saveTasks();
+
+  const listItemElement = createTaskLists(task);
+  taskList.appendChild(listItemElement);
+}
+
+const updateTaskIndexes = () => {
+  tasks.forEach((task, index) => {
+    task.index = index + 1;
+  });
+};
+
+const renderTaskList = () => {
+  taskList.innerHTML = '';
+
+  tasks
+    .sort((task1, task2) => task1.index - task2.index)
+    .forEach((task) => {
+      const listItemElement = createTaskLists(task);
+      taskList.appendChild(listItemElement);
+    });
+};
+
+deleteTask = (index) => {
+  tasks = tasks.filter((task) => task.index !== index);
+  updateTaskIndexes();
+  saveTasks();
+  renderTaskList();
+};
+editTaskDescription = (task) => {
+  const inputElement = document.createElement('input');
+  inputElement.type = 'text';
+  inputElement.value = task.description;
+  inputElement.classList.add('edit-input');
+
+  inputElement.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      task.description = inputElement.value.trim();
+      saveTasks();
+      renderTaskList();
+    } else if (event.key === 'Escape') {
+      renderTaskList();
+    }
+  });
+
+  const listItemElement = taskList.children[task.index -= 1];
+  listItemElement.replaceChild(inputElement, listItemElement.children[1]);
+  inputElement.select();
+  task.index += 1;
+};
+
+const clearCompletedTasks = () => {
+  tasks = tasks.filter((task) => !task.completed);
+  updateTaskIndexes();
+  saveTasks();
+  renderTaskList();
+};
+
+const clearCompleted = document.getElementById('clear');
+clearCompleted.addEventListener('click', (event) => {
+  event.preventDefault();
+  clearCompletedTasks();
+});
+const refreshCompleted = document.getElementById('refresh');
+refreshCompleted.addEventListener('click', (event) => {
+  event.preventDefault();
+  clearCompletedTasks();
+});
+
+export {
+  saveTasks, renderTaskList, addNewTask,
+  updateTaskIndexes,
 };
